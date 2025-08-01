@@ -28,7 +28,10 @@ return {
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    notifier = { enabled = true, timeout = 3000 },
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+    },
     picker = { enabled = true },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -42,15 +45,6 @@ return {
     },
   },
   keys = {
-    -- Dashboard
-    {
-      "<leader>sd",
-      function()
-        require("snacks").dashboard()
-      end,
-      desc = "Snacks Dashboard",
-    },
-
     -- Top Pickers & Explorer
     {
       "<leader><space>",
@@ -94,8 +88,7 @@ return {
       end,
       desc = "File Explorer",
     },
-
-    -- Additional pickers
+    -- find
     {
       "<leader>fb",
       function()
@@ -138,8 +131,7 @@ return {
       end,
       desc = "Recent",
     },
-
-    -- Git
+    -- git
     {
       "<leader>gb",
       function()
@@ -189,7 +181,6 @@ return {
       end,
       desc = "Git Log File",
     },
-
     -- Grep
     {
       "<leader>sb",
@@ -220,8 +211,7 @@ return {
       desc = "Visual selection or word",
       mode = { "n", "x" },
     },
-
-    -- Search & history
+    -- search
     {
       '<leader>s"',
       function()
@@ -242,6 +232,13 @@ return {
         Snacks.picker.autocmds()
       end,
       desc = "Autocmds",
+    },
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
     },
     {
       "<leader>sc",
@@ -362,7 +359,6 @@ return {
       end,
       desc = "Colorschemes",
     },
-
     -- LSP
     {
       "gd",
@@ -398,7 +394,7 @@ return {
       function()
         Snacks.picker.lsp_type_definitions()
       end,
-      desc = "Goto Type Definition",
+      desc = "Goto T[y]pe Definition",
     },
     {
       "<leader>ss",
@@ -414,8 +410,7 @@ return {
       end,
       desc = "LSP Workspace Symbols",
     },
-
-    -- Misc utilities
+    -- Other
     {
       "<leader>z",
       function()
@@ -517,7 +512,6 @@ return {
       desc = "Prev Reference",
       mode = { "n", "t" },
     },
-
     {
       "<leader>N",
       desc = "Neovim News",
@@ -541,24 +535,16 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
-        local Snacks = require("snacks")
-        -- show dashboard automatically if no file open
-        if vim.fn.argc() == 0 then
-          vim.schedule(function()
-            Snacks.dashboard()
-          end)
-        end
-
-        -- debugging globals
+        -- Setup some globals for debugging (lazy-loaded)
         _G.dd = function(...)
           Snacks.debug.inspect(...)
         end
         _G.bt = function()
           Snacks.debug.backtrace()
         end
-        vim.print = _G.dd
+        vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        -- toggle mappings
+        -- Create some toggle mappings
         Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
