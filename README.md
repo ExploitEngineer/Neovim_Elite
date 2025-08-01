@@ -112,7 +112,7 @@ nvim
 
 ## 📸 Preview
 
-*Coming soon...*
+![Neovim Preview](./assets/neovim.png)
 
 ---
 
