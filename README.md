@@ -31,6 +31,11 @@ A modern, powerful, and minimal Neovim configuration tailored for developers who
 
 ---
 
+## 🎨 Theme Preview
+![Theme Menu](./assets/theme-menu.png)
+
+---
+
 ## 🔧 Installation Guide
 
 ### ⚠️ Prerequisite
@@ -117,14 +122,6 @@ nvim
 ![Neovim Logo](./assets/neovim-new.png)
 
 ![Neovim Tree](./assets/neovim-tree.png)
-
----
-
-## 🎨 Theme Preview
-
-This section showcases the theme and menu customization available in Neovim Elite.
-
-![Theme Menu](./assets/theme-menu.png)
 
 ---
 
