@@ -4,6 +4,10 @@ A modern, powerful, and minimal Neovim configuration tailored for developers who
 
 ---
 
+## 📸 Screenshots
+
+![Neovim Main Screen](./assets/neovim-main-screen.png)
+
 ## 🚀 Features
 
 * **LazyVim Base**: Clean, modular configuration built on LazyVim.
@@ -110,9 +114,17 @@ nvim
 
 ---
 
-## 📸 Preview
+![Neovim Logo](./assets/neovim-new.png)
 
-![Neovim Preview](./assets/neovim.png)
+![Neovim Tree](./assets/neovim-tree.png)
+
+---
+
+## 🎨 Theme Preview
+
+This section showcases the theme and menu customization available in Neovim Elite.
+
+![Theme Menu](./assets/theme-menu.png)
 
 ---
 
