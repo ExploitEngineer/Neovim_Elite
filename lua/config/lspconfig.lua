@@ -4,11 +4,8 @@ local capabilities = default_config.capabilities
 
 -- custom on_attach with extra keymaps
 local function custom_on_attach(client, bufnr)
-  on_attach(client, bufnr)
-
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- code action
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- hover docs
+  on_attach(client, bufnr) -- existing default setup
+  keymaps.setup_lsp(bufnr) -- new keymaps from keymaps.lua
 end
 
 local lspconfig = require("lspconfig")
